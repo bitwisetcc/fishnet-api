@@ -7,15 +7,15 @@ const fishSchema = new mongoose.Schema({
   },
   price: {
     type: String,
-    required: true,
+    required: false,
   },
   picture: {
     type: String,
-    required: true,
+    required: false,
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   ecosystem: {
     type: String,

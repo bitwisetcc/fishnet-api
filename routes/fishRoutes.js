@@ -5,8 +5,8 @@ const Fish = require('../models/fish');
 // Rota para obter todos os fishs
 router.get('/', async (req, res) => {
   try {
-    const fishs = await Fish.find();
-    res.json(fishs);
+    const fish = await Fish.find();
+    res.json(fish);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -20,7 +20,7 @@ router.get('/:id', getFish, (req, res) => {
 // Rota para criar um novo fish
 router.post('/', async (req, res) => {
   const fish = new Fish({
-    name_specie: req.body.name_specie,
+    name_species: req.body.name_species,
     price: req.body.price,
     picture: req.body.picture,
     description: req.body.description,
@@ -89,5 +89,7 @@ async function getFish(req, res, next) {
     return res.status(500).json({ message: err.message });
   }
 }
+
+
 
 module.exports = router;
