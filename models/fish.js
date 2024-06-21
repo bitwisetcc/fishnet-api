@@ -1,21 +1,25 @@
 const mongoose = require('mongoose');
 
 const fishSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
   name_species: {
     type: String,
     required: true,
   },
   price: {
     type: String,
-    required: false,
+    required: true,
   },
   picture: {
     type: String,
-    required: false,
+    required: true,
   },
   description: {
     type: String,
-    required: false,
+    required: true,
   },
   ecosystem: {
     type: String,
@@ -45,7 +49,9 @@ const fishSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-});
+},
+
+{collection: 'species'});
 
 const Fish = mongoose.model('Fish', fishSchema);
 
