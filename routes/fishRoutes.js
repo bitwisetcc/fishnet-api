@@ -43,20 +43,38 @@ router.post('/', async (req, res) => {
 
 // Rota para atualizar um fish por ID
 router.put('/:id', getFish, async (req, res) => {
-  if (req.body.nome != null) {
-    res.fish.nome = req.body.nome;
+  if (req.body.name_species != null) {
+    res.fish.name_species = req.body.name_species;
   }
-  if (req.body.email != null) {
-    res.fish.email = req.body.email;
+  if (req.body.price != null) {
+    res.fish.price = req.body.price;
   }
-  if (req.body.telefone != null) {
-    res.fish.telefone = req.body.telefone;
+  if (req.body.picture != null) {
+    res.fish.picture = req.body.picture;
   }
-  if (req.body.endereco != null) {
-    res.fish.endereco = req.body.endereco;
+  if (req.body.description != null) {
+    res.fish.description = req.body.description;
   }
-  if (req.body.foto != null) {
-    res.fish.foto = req.body.foto;
+  if (req.body.ecosystem != null) {
+    res.fish.ecosystem = req.body.ecosystem;
+  }
+  if (req.body.feeding != null) {
+    res.fish.feeding = req.body.feeding;
+  }
+  if (req.body.size != null) {
+    res.fish.size = req.body.size;
+  }
+  if (req.body.tank_size != null) {
+    res.fish.tank_size = req.body.tank_size;
+  }
+  if (req.body.velocity != null) {
+    res.fish.velocity = req.body.velocity;
+  }
+  if (req.body.origin != null) {
+    res.fish.origin = req.body.origin;
+  }
+  if (req.body.social_behavior != null) {
+    res.fish.social_behavior = req.body.social_behavior;
   }
 
   try {
@@ -89,7 +107,5 @@ async function getFish(req, res, next) {
     return res.status(500).json({ message: err.message });
   }
 }
-
-
 
 module.exports = router;

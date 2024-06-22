@@ -1,26 +1,33 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const fishRouter = require('./routes/fishRoutes');
 app.use('/fishs', fishRouter);
 
+app.get('/products/:id', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'});
+});
+
+const PORT = process.env.PORT || 8080;
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Erro de conexão ao MongoDB:'));
-db.once('open', () => {
+})
+.then(() => {
   console.log('Conectado ao MongoDB Atlas!');
-});
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+})
+.catch((error) => {
+  console.error('Erro de conexão ao MongoDB:', error);
 });
